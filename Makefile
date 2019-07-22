@@ -4,6 +4,9 @@ export
 mysql: # Access the MySQL cli.
 	@mysql -h ${DB_HOST} -u ${DB_USER} -p ${DB_NAME}
 
+postgres:
+	@docker exec -it ${DOCKER_ID} psql -h localhost -U ${DB_USER} ${DB_NAME} 
+
 dump: # Backup the database.
 	@mysqldump -h ${DB_HOST} -u ${DB_USER} -p ${DB_NAME} > backup.sql
 
